@@ -1,0 +1,29 @@
+{
+  address: <%= address %>
+, port: <%= port %>
+, debug: <%= debug %>
+, mgmt_address: <%= mgmt_address %>
+, mgmt_port: <%= mgmt_port %>
+, debugInterval: <%= debugInterval %>
+, dumpMessages: <%= dumpMessages %>
+, percentThreshold: <%= percentThreshold %>
+, flushInterval: <%= flushInterval %>
+<% if @graphiteHost && @graphitePort -%>
+, graphiteHost: <%= graphiteHost %>
+, graphitePort: <%= graphitePort %>
+<% end -%>
+, backends: <%= backends %>
+, log: {
+    backend: <%= log_backend %>
+    , application: <%= log_application %>
+    , level: <% log_level %>
+  }
+, keyFlush: {
+    interval: <%= keyFlush_interval %>
+    , percent: <%= keyFlush_percent %>
+    , log: <%= keyFlush_log %>
+  }
+, console: {
+    prettyprint: <%= console_prettyprint %>
+  }
+}
