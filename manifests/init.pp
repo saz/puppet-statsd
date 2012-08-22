@@ -63,7 +63,7 @@ define statsd (
   $package_name = $statsd::params::package_name,
   $package_provider = $statsd::params::package_provider
 ) {
-  include statsd::params {
+  include statsd::params
 
   case $ensure {
     present: {
