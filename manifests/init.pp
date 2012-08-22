@@ -35,7 +35,7 @@
 #
 # Copyright 2011 Your name here, unless otherwise noted.
 #
-class statsd (
+define statsd (
   $flushInterval,
   $ensure = present,
   $autoupgrade = false,
@@ -62,7 +62,8 @@ class statsd (
   $config_file_group = $statsd::params::config_file_user,
   $package_name = $statsd::params::package_name,
   $package_provider = $statsd::params::package_provider
-) inherits statsd::params {
+) {
+  include statsd::params {
 
   case $ensure {
     present: {
@@ -88,12 +89,29 @@ class statsd (
     provider => $package_provider,
   }
 
-  file { $config_file:
+  include concat::setup
+  concat { $config_file: }
+
+  concat::fragment { "statsd_base_${name}":
     ensure  => $file_ensure,
-    owner   => $config_file_user,
-    group   => $config_file_group,
-    mode    => '0644',
+    target  => $config_file,
     content => template("${module_name}/statsd.js.erb"),
-    require => Package[$package_name],
+    order   => 01,
   }
+
+  concat::fragment { "statsd_end_${name}":
+    ensure  => $file_ensure,
+    target  => $config_file,
+    content => "}\n",
+    order   => 99,
+  }
+
+  #file { $config_file:
+  #  ensure  => $file_ensure,
+  #  owner   => $config_file_user,
+  #  group   => $config_file_group,
+  #  mode    => '0644',
+  #  content => template("${module_name}/statsd.js.erb"),
+  #  require => Package[$package_name],
+  #}
 }
