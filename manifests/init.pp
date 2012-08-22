@@ -44,7 +44,7 @@ class statsd (
   $graphiteHost = undef,
   $graphitePort = undef,
   $backends = ['graphite'],
-  $debug = false,
+  $statsd_debug = false,
   $mgmt_address = '0.0.0.0',
   $mgmt_port = 8126,
   $debugInterval = 10000,
