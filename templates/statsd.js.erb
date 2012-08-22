@@ -1,27 +1,27 @@
 {
-  address: <%= address %>
+  address: '<%= address %>'
 , port: <%= port %>
 , debug: <%= statsd_debug %>
-, mgmt_address: <%= mgmt_address %>
+, mgmt_address: '<%= mgmt_address %>'
 , mgmt_port: <%= mgmt_port %>
 , debugInterval: <%= debugInterval %>
 , dumpMessages: <%= dumpMessages %>
 , percentThreshold: <%= percentThreshold %>
 , flushInterval: <%= flushInterval %>
 <% if @graphiteHost && @graphitePort -%>
-, graphiteHost: <%= graphiteHost %>
+, graphiteHost: '<%= graphiteHost %>'
 , graphitePort: <%= graphitePort %>
 <% end -%>
-, backends: <%= backends %>
+, backends: [<%= backends.join(',') %>]
 , log: {
-    backend: <%= log_backend %>
-    , application: <%= log_application %>
-    , level: <%= log_level %>
+    backend: '<%= log_backend %>'
+    , application: '<%= log_application %>'
+    , level: '<%= log_level %>'
   }
 , keyFlush: {
     interval: <%= keyFlush_interval %>
     , percent: <%= keyFlush_percent %>
-    , log: <%= keyFlush_log %>
+    , log: '<%= keyFlush_log %>'
   }
 , console: {
     prettyprint: <%= console_prettyprint %>

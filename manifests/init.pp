@@ -43,7 +43,7 @@ class statsd (
   $port = 8125,
   $graphiteHost = undef,
   $graphitePort = undef,
-  $backends = ['graphite'],
+  $backends = ['./backends/graphite',],
   $statsd_debug = false,
   $mgmt_address = '0.0.0.0',
   $mgmt_port = 8126,
