@@ -12,7 +12,7 @@
 , graphiteHost: '<%= graphiteHost %>'
 , graphitePort: <%= graphitePort %>
 <% end -%>
-, backends: [<%= backends.join(',') %>]
+, backends: ["<%= backends.join('","') %>"]
 , log: {
     backend: '<%= log_backend %>'
     , application: '<%= log_application %>'
