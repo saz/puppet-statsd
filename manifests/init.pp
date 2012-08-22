@@ -57,11 +57,11 @@ define statsd (
   $keyFlush_percent = 100,
   $keyFlush_log = 'STDOUT',
   $console_prettyprint = true,
-  $config_file = $statsd::params::config_file,
+  $config_file = '/etc/statsd.js',
   $config_file_user = $statsd::params::config_file_user,
   $config_file_group = $statsd::params::config_file_user,
-  $package_name = $statsd::params::package_name,
-  $package_provider = $statsd::params::package_provider
+  $package_name = 'statsd',
+  $package_provider = 'npm'
 ) {
   include statsd::params
 
