@@ -1,9 +1,12 @@
-class statsd (
+class statsd::backend (
+  $packages,
   $ensure = 'present',
   $autoupgrade = false,
-  $package_name = $statsd::params::package_name,
-  $package_provider = $statsd::params::package_provider,
+  $package_provider = $statsd::params::package_provider
 ) inherits statsd::params {
+  Class['statsd'] -> Class['statsd::backend']
+
+  validate_array($packages)
 
   case $ensure {
     present: {
@@ -21,7 +24,7 @@ class statsd (
     }
   }
 
-  package { $package_name:
+  package { $packages:
     ensure   => $package_ensure,
     provider => $package_provider,
   }
