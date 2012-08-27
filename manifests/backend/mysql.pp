@@ -25,7 +25,7 @@ define statsd::backend::mysql (
     }
   }
 
-  concat::fragment { 'statsd_backend_mysql':
+  concat::fragment { "statsd_backend_mysql_${name}":
     ensure  => $file_ensure,
     target  => $config_file,
     content => template("${module_name}/backend/mysql.erb"),
