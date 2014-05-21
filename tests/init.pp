@@ -7,7 +7,5 @@
 # (to compare the resulting system state to the desired state).
 #
 # Learn more about module testing here: http://docs.puppetlabs.com/guides/tests_smoke.html
-#
-class { 'statsd':
-  flushInterval => 60000,
-}
+include nodejs
+class { 'statsd': }
